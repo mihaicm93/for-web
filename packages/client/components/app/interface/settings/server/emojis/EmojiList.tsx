@@ -45,6 +45,14 @@ export function EmojiList(props: { server: Server }) {
   );
 
   async function onSubmit() {
+    const rawName = editGroup.controls.name.value ?? "";
+    // allow only lowercase letters, digits and underscore (match server)
+    const name = rawName
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9_]/g, "");
+    editGroup.controls.name.setValue(name);
+
     const body = new FormData();
     body.append("file", editGroup.controls.file.value![0]);
 
@@ -61,7 +69,7 @@ export function EmojiList(props: { server: Server }) {
     ).then((res) => res.json());
 
     await props.server.createEmoji(data.id, {
-      name: editGroup.controls.name.value,
+      name,
     });
   }
 
@@ -90,6 +98,14 @@ export function EmojiList(props: { server: Server }) {
                 name="name"
                 control={editGroup.controls.name}
                 label={t`Emoji Name`}
+                value={editGroup.controls.name.value}
+                onInput={(e: Event) => {
+                  const input = e.currentTarget as HTMLInputElement;
+                  const value = input.value
+                    .toLowerCase()
+                    .replace(/[^a-z0-9_]/g, "");
+                  editGroup.controls.name.setValue(value);
+                }}
               />
 
               <Row align>
