@@ -50,7 +50,7 @@ export function Titlebar() {
           animate={{ height: "29px" }}
           exit={{ height: 0 }}
         >
-          <Base disconnected={isDisconnected()}>
+          <Base disconnected={isDisconnected()} hasUpdate={!!pendingUpdate()}>
             <Title
               style={{
                 "-webkit-user-select": "none",
@@ -109,18 +109,27 @@ export function Titlebar() {
                   </a>
                 </Match>
               </Switch>
+            <Presence>
               <Show when={pendingUpdate()}>
-                {" "}
-                <div
-                  style={{
-                    "-webkit-app-region": "no-drag",
-                  }}
+                <Motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <Button size="sm" onPress={pendingUpdate()}>
-                    Update
-                  </Button>
-                </div>
+                  <span>New update available</span>
+                  <a
+                    onClick={() => pendingUpdate()?.()}
+                    style={{
+                      "-webkit-app-region": "no-drag",
+                      cursor: "pointer",
+                      color: "var(--md-sys-color-primary)",
+                    }}
+                  >
+                    <strong> click here to restart & update</strong>
+                  </a>
+                </Motion.div>
               </Show>
+            </Presence>
             </DragHandle>
             <Show when={window.native}>
               <Action onClick={window.native.minimise}>
@@ -168,6 +177,12 @@ const Base = styled("div", {
       false: {
         color: "var(--md-sys-color-outline)",
         background: "var(--md-sys-color-surface-container-high)",
+      },
+    },
+    hasUpdate: {
+      true: {
+        background: "var(--md-sys-color-secondary-container)",
+        color: "var(--md-sys-color-on-secondary-container)",
       },
     },
   },
