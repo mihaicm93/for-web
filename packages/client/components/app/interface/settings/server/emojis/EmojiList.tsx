@@ -50,7 +50,8 @@ export function EmojiList(props: { server: Server }) {
     const name = rawName
       .trim()
       .toLowerCase()
-      .replace(/[^a-z0-9_]/g, "");
+      .replace(/[^a-z0-9_]/g, "")
+      .slice(0, 32);
     editGroup.controls.name.setValue(name);
 
     const body = new FormData();
