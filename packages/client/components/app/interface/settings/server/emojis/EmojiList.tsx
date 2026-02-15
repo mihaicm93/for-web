@@ -34,9 +34,32 @@ export function EmojiList(props: { server: Server }) {
 
   const editGroup = createFormGroup(
     {
-      name: createFormControl("", { required: true }),
+      name: createFormControl("", {
+        required: true,
+        normalize: (v) =>
+          v
+            .toLowerCase()
+            .replace(/[^a-z0-9_]/g, "")
+            .slice(0, 32),
+      }),
       file: createFormControl<string | File[] | null>(null, {
         required: true,
+        validate: (files) => {
+          if (!files || files.length === 0) return t`Emoji Required`;
+          if (files[0].size > 500 * 1024)
+            return t`File size must be less than 500KB`;
+          if (
+            ![
+              "image/png",
+              "image/jpeg",
+              "image/jpg",
+              "image/gif",
+              "image/webp",
+            ].includes(files[0].type)
+          )
+            return t`Invalid file type. Only PNG, JPEG, JPG, GIF and WEBP are allowed.`;
+          return true;
+        },
       }),
     },
     {
@@ -45,15 +68,7 @@ export function EmojiList(props: { server: Server }) {
   );
 
   async function onSubmit() {
-    const rawName = editGroup.controls.name.value ?? "";
-    // allow only lowercase letters, digits and underscore (match server)
-    const name = rawName
-      .trim()
-      .toLowerCase()
-      .replace(/[^a-z0-9_]/g, "")
-      .slice(0, 32);
-    editGroup.controls.name.setValue(name);
-
+    const name = editGroup.controls.name.value ?? "";
     const body = new FormData();
     body.append("file", editGroup.controls.file.value![0]);
 
@@ -98,17 +113,10 @@ export function EmojiList(props: { server: Server }) {
               <Form2.TextField
                 name="name"
                 control={editGroup.controls.name}
-                label={t`Emoji Name`}
+                label={`${t`Emoji Name`} (${editGroup.controls.name.value?.length || 0}/32)`}
                 value={editGroup.controls.name.value}
-                onInput={(e: Event) => {
-                  const input = e.currentTarget as HTMLInputElement;
-                  const value = input.value
-                    .toLowerCase()
-                    .replace(/[^a-z0-9_]/g, "");
-                  editGroup.controls.name.setValue(value);
-                }}
+                maxLength={32}
               />
-
               <Row align>
                 <Form2.Submit group={editGroup}>
                   <Trans>Create</Trans>
