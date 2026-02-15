@@ -1169,6 +1169,10 @@ msgstr ""
 msgid "Emoji Pack (affects your messages only)"
 msgstr ""
 
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Emoji Required"
+msgstr ""
+
 #: components/app/interface/settings/ServerSettings.tsx
 msgid "Emojis"
 msgstr ""
@@ -1248,6 +1252,10 @@ msgstr ""
 #: components/app/interface/settings/user/Feedback.tsx
 msgid "Feedback"
 msgstr "toki wile"
+
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "File size must be less than 500KB"
+msgstr ""
 
 #: src/interface/Home.tsx
 msgid "Find a community based on your hobbies or interests."
@@ -1434,6 +1442,10 @@ msgstr ""
 
 #: components/app/interface/settings/user/appearance/AppearanceMenu.tsx
 msgid "Interface Font"
+msgstr ""
+
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Invalid file type. Only PNG, JPEG, JPG, GIF and WEBP are allowed."
 msgstr ""
 
 #: src/interface/navigation/servers/UserMenu.tsx

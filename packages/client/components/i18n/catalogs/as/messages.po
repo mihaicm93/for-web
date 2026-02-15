@@ -1169,6 +1169,10 @@ msgstr ""
 msgid "Emoji Pack (affects your messages only)"
 msgstr ""
 
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Emoji Required"
+msgstr ""
+
 #: components/app/interface/settings/ServerSettings.tsx
 msgid "Emojis"
 msgstr ""
@@ -1247,6 +1251,10 @@ msgstr "প্ৰমাণিত কৰিব পৰা নগল!"
 #: components/app/interface/settings/UserSettings.tsx
 #: components/app/interface/settings/user/Feedback.tsx
 msgid "Feedback"
+msgstr ""
+
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "File size must be less than 500KB"
 msgstr ""
 
 #: src/interface/Home.tsx
@@ -1434,6 +1442,10 @@ msgstr ""
 
 #: components/app/interface/settings/user/appearance/AppearanceMenu.tsx
 msgid "Interface Font"
+msgstr ""
+
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Invalid file type. Only PNG, JPEG, JPG, GIF and WEBP are allowed."
 msgstr ""
 
 #: src/interface/navigation/servers/UserMenu.tsx

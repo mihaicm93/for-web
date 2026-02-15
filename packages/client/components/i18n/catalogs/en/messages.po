@@ -1169,6 +1169,10 @@ msgstr "Emoji Name"
 msgid "Emoji Pack (affects your messages only)"
 msgstr "Emoji Pack (affects your messages only)"
 
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Emoji Required"
+msgstr "Emoji Required"
+
 #: components/app/interface/settings/ServerSettings.tsx
 msgid "Emojis"
 msgstr "Emojis"
@@ -1248,6 +1252,10 @@ msgstr "Failed to verify!"
 #: components/app/interface/settings/user/Feedback.tsx
 msgid "Feedback"
 msgstr "Feedback"
+
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "File size must be less than 500KB"
+msgstr "File size must be less than 500KB"
 
 #: src/interface/Home.tsx
 msgid "Find a community based on your hobbies or interests."
@@ -1435,6 +1443,10 @@ msgstr "Instead of closing, Stoat will hide in your tray."
 #: components/app/interface/settings/user/appearance/AppearanceMenu.tsx
 msgid "Interface Font"
 msgstr "Interface Font"
+
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Invalid file type. Only PNG, JPEG, JPG, GIF and WEBP are allowed."
+msgstr "Invalid file type. Only PNG, JPEG, JPG, GIF and WEBP are allowed."
 
 #: src/interface/navigation/servers/UserMenu.tsx
 msgid "Invisible"
