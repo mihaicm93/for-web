@@ -21,9 +21,14 @@ export function BanMemberModal(
   });
 
   async function onSubmit() {
+      let reason = group.controls.reason.value ?? "";
+      if (reason.length > 1024)
+        reason = reason.slice(0, 1024);
+      
+
     try {
       await props.member.ban({
-        reason: group.controls.reason.value,
+        reason,
       });
 
       props.onClose();
@@ -63,7 +68,11 @@ export function BanMemberModal(
             control={group.controls.reason}
             label={t`Reason`}
             placeholder={t`User broke a certain rule…`}
+            maxLength={1024}
           />
+          <Text size="small">
+            {`${group.controls.reason.value.length}/1024`}
+          </Text>
         </Column>
       </form>
     </Dialog>
