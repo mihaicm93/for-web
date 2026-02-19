@@ -17,10 +17,15 @@ export function VoiceProcessingOptions() {
       <CategoryButton.Group>
         <CategoryButton
           icon="blank"
-          action={<Checkbox checked={state.voice.noiseSupression}
+          action={
+            <Checkbox
+              checked={state.voice.noiseSupression}
               onClick={(e) => e.stopPropagation()}
-              onChange={() => (state.voice.noiseSupression = !state.voice.noiseSupression)}
-              />}
+              onChange={() =>
+                (state.voice.noiseSupression = !state.voice.noiseSupression)
+              }
+            />
+          }
           onClick={() =>
             (state.voice.noiseSupression = !state.voice.noiseSupression)
           }
@@ -29,10 +34,15 @@ export function VoiceProcessingOptions() {
         </CategoryButton>
         <CategoryButton
           icon="blank"
-          action={<Checkbox checked={state.voice.echoCancellation}
-            onClick={(e) => e.stopPropagation()}
-            onChange={() => (state.voice.echoCancellation = !state.voice.echoCancellation)}
-            />}
+          action={
+            <Checkbox
+              checked={state.voice.echoCancellation}
+              onClick={(e) => e.stopPropagation()}
+              onChange={() =>
+                (state.voice.echoCancellation = !state.voice.echoCancellation)
+              }
+            />
+          }
           onClick={() =>
             (state.voice.echoCancellation = !state.voice.echoCancellation)
           }
