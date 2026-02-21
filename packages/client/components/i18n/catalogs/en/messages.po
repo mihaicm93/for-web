@@ -3070,6 +3070,10 @@ msgstr "You cannot give yourself missing permissions."
 msgid "You cannot join this call."
 msgstr "You cannot join this call."
 
+#: components/app/interface/settings/server/roles/ServerRoleOverview.tsx
+msgid "You cannot move or adjust roles equal to or higher than your own."
+msgstr "You cannot move or adjust roles equal to or higher than your own."
+
 #: components/i18n/errors.ts
 msgid "You cannot remove yourself."
 msgstr "You cannot remove yourself."
