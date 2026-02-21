@@ -288,7 +288,9 @@ export function UserContextMenu(props: {
           when={
             props.member?.server?.owner?.self ||
             (props.member?.server?.havePermission("AssignRoles") &&
-              props.member.inferiorTo(props.member.server.member!))
+              props.member.inferiorTo(props.member.server.member!)) ||
+            (props.member?.server?.havePermission("AssignRoles") &&
+              props.user.self)
           }
         >
           <ContextMenuButton icon={MdAssignmentInd} onClick={editRoles}>
