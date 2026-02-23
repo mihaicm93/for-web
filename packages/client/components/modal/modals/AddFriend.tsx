@@ -1,7 +1,7 @@
 import { createFormControl, createFormGroup } from "solid-forms";
 
 import { Trans, useLingui } from "@lingui-solid/solid/macro";
-import { createMemo } from "solid-js";
+import { createMemo, Show } from "solid-js";
 
 import { Dialog, DialogProps, Form2 } from "@revolt/ui";
 
@@ -89,7 +89,7 @@ export function AddFriendModal(
                   "font-size": "0.75rem",
                 }}
               >
-                {t`Username #1234 required`}
+                {t`username#1234 required`}
               </small>
             </div>
           </Show>
