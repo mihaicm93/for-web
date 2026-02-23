@@ -2884,12 +2884,16 @@ msgid "Username"
 msgstr "Username"
 
 #: components/modal/modals/AddFriend.tsx
-msgid "Username #1234 required"
-msgstr "Username #1234 required"
+#~ msgid "Username #1234 required"
+#~ msgstr "Username #1234 required"
 
 #: components/modal/modals/AddFriend.tsx
 msgid "username#1234"
 msgstr "username#1234"
+
+#: components/modal/modals/AddFriend.tsx
+msgid "username#1234 required"
+msgstr "username#1234 required"
 
 #: components/modal/modals/ChannelToggleMature.tsx
 msgid "Users will be asked to confirm their age before joining this channel."
