@@ -2884,6 +2884,10 @@ msgid "Username"
 msgstr "Nazwa użytkownika"
 
 #: components/modal/modals/AddFriend.tsx
+msgid "Username #1234 required"
+msgstr ""
+
+#: components/modal/modals/AddFriend.tsx
 msgid "username#1234"
 msgstr ""
 
