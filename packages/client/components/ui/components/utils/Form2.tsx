@@ -25,9 +25,15 @@ import { FileInput } from "./files";
 const FormTextField = (
   props: {
     control: IFormControl<string>;
+    pattern?: RegExp;
+    patternError?: string;
   } & ComponentProps<typeof TextField>,
 ) => {
-  const [local, remote] = splitProps(props, ["control"]);
+  const [local, remote] = splitProps(props, [
+    "control",
+    "pattern",
+    "patternError",
+  ]);
 
   return (
     <>
@@ -35,8 +41,18 @@ const FormTextField = (
         {...remote}
         value={local.control.value}
         oninput={(e) => {
-          local.control.setValue(e.currentTarget.value);
+          const value = e.currentTarget.value;
+          local.control.setValue(value);
           local.control.markDirty(true);
+
+          if (local.pattern && local.patternError) {
+            if (!local.pattern.test(value)) {
+              local.control.setErrors({ pattern: local.patternError });
+              return;
+            }
+
+            local.control.setErrors(null);
+          }
         }}
         required={local.control.isRequired}
         disabled={local.control.isDisabled}
@@ -132,12 +148,23 @@ const FormFileInput = (
   props: {
     label?: string;
     control: IFormControl<File[] | string | null>;
+    types?: string[];
+    maxSize?: number;
+    typeError?: string;
+    sizeError?: string;
   } & Pick<
     ComponentProps<typeof FileInput>,
     "accept" | "imageAspect" | "imageRounded" | "imageJustify" | "allowRemoval"
   >,
 ) => {
-  const [local, remote] = splitProps(props, ["label", "control"]);
+  const [local, remote] = splitProps(props, [
+    "label",
+    "control",
+    "types",
+    "maxSize",
+    "typeError",
+    "sizeError",
+  ]);
 
   return (
     <>
@@ -148,19 +175,40 @@ const FormFileInput = (
         {...remote}
         file={local.control.value}
         onFiles={(files) => {
-          // TODO: do validation of files here
+          if (!files || files.length === 0) {
+            local.control.setValue(null);
+            local.control.markDirty(true);
+            return;
+          }
 
+          const file = files[0];
+
+          // Type validation
+          if (local.types && !local.types.includes(file.type)) {
+            local.control.setErrors({
+              type: local.typeError || "Invalid file type",
+            });
+            local.control.markTouched(true);
+            return;
+          }
+
+          // Size validation
+          if (local.maxSize && file.size > local.maxSize) {
+            const maxKB = Math.round(local.maxSize / 1024);
+            local.control.setErrors({
+              size: local.sizeError || `Max size is ${maxKB}KB`,
+            });
+            local.control.markTouched(true);
+            return;
+          }
+
+          local.control.setErrors(null);
           local.control.setValue(files);
           local.control.markDirty(true);
         }}
         required={local.control.isRequired}
         disabled={local.control.isDisabled}
       />
-      <Show when={local.control.isTouched && !local.control.isValid}>
-        <For each={Object.keys(local.control.errors!)}>
-          {(errorMsg: string) => <small>{errorMsg}</small>}
-        </For>
-      </Show>
     </>
   );
 };
