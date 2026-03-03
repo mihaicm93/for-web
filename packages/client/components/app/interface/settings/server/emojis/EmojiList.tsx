@@ -13,6 +13,7 @@ import {
   Avatar,
   CategoryButton,
   CircularProgress,
+  ColouredText,
   Column,
   Form2,
   Row,
@@ -27,6 +28,16 @@ export function EmojiList(props: { server: Server }) {
   const { t } = useLingui();
   const client = useClient();
   const { openModal } = useModals();
+
+  // Validation requirements
+  const namePattern = /^[a-z0-9_]{1,32}$/;
+  const imgTypes = ["image/png", "image/jpeg", "image/gif", "image/webp"];
+  const maxSize = 500 * 1024;
+
+  // Validation errors
+  const namePatternError = t`Lowercase, numbers and underscores only.`;
+  const invalidTypeError = t`File type not supported, only ${imgTypes} are allowed.`;
+  const imageSizeError = t`Image size can be maximum ${maxSize / 1024}KB`;
 
   function isDisabled() {
     return props.server.emojis.length >= CONFIGURATION.MAX_EMOJI;
@@ -43,6 +54,20 @@ export function EmojiList(props: { server: Server }) {
       disabled: isDisabled(),
     },
   );
+
+  const valError = (control: {
+    errors: Record<string, unknown> | null | undefined;
+    isDirty: boolean;
+    isTouched: boolean;
+  }) => {
+    if (!control.isDirty && !control.isTouched) return undefined;
+    if (!control.errors) return undefined;
+
+    const errorKeys = Object.keys(control.errors);
+    return errorKeys.length > 0
+      ? (control.errors[errorKeys[0]] as string)
+      : undefined;
+  };
 
   async function onSubmit() {
     const body = new FormData();
@@ -81,6 +106,10 @@ export function EmojiList(props: { server: Server }) {
               <Form2.FileInput
                 control={editGroup.controls.file}
                 accept="image/*"
+                types={imgTypes}
+                typeError={invalidTypeError}
+                maxSize={maxSize}
+                sizeError={imageSizeError}
                 imageJustify={false}
                 allowRemoval={false}
               />
@@ -90,6 +119,8 @@ export function EmojiList(props: { server: Server }) {
                 name="name"
                 control={editGroup.controls.name}
                 label={t`Emoji Name`}
+                pattern={namePattern}
+                patternError={namePatternError}
               />
 
               <Row align>
@@ -104,6 +135,18 @@ export function EmojiList(props: { server: Server }) {
                     </Trans>
                   }
                 >
+                  <Match
+                    when={
+                      valError(editGroup.controls.name) ??
+                      valError(editGroup.controls.file)
+                    }
+                  >
+                    <ColouredText colour="var(--md-sys-color-error)">
+                      {valError(editGroup.controls.name) ??
+                        valError(editGroup.controls.file)}
+                    </ColouredText>
+                  </Match>
+
                   <Match when={editGroup.errors?.error}>
                     {err(editGroup.errors!.error)}
                   </Match>
