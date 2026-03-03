@@ -1254,6 +1254,10 @@ msgstr "Failed to verify!"
 msgid "Feedback"
 msgstr "Feedback"
 
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "File type not supported, only {imgTypes} are allowed."
+msgstr "File type not supported, only {imgTypes} are allowed."
+
 #: src/interface/Home.tsx
 msgid "Find a community based on your hobbies or interests."
 msgstr "Find a community based on your hobbies or interests."
@@ -1428,6 +1432,11 @@ msgstr "Illegal hacking or cracking"
 #: components/auth/src/AuthPage.tsx
 msgid "Image by @fakurian"
 msgstr "Image by @fakurian"
+
+#. placeholder {0}: maxSize / 1024
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Image size can be maximum {0}KB"
+msgstr "Image size can be maximum {0}KB"
 
 #: components/modal/modals/ReportContent.tsx
 msgid "Impersonation"
@@ -1627,6 +1636,10 @@ msgstr "Login"
 #: components/app/interface/settings/user/Sessions.tsx
 msgid "Logs you out of all sessions except this device."
 msgstr "Logs you out of all sessions except this device."
+
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Lowercase, numbers and underscores only."
+msgstr "Lowercase, numbers and underscores only."
 
 #: components/modal/modals/ReportContent.tsx
 msgid "Malware or phishing"

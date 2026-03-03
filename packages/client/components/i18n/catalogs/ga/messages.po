@@ -1254,6 +1254,10 @@ msgstr "Theip ar an bhfíorú!"
 msgid "Feedback"
 msgstr "Aischothú"
 
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "File type not supported, only {imgTypes} are allowed."
+msgstr ""
+
 #: src/interface/Home.tsx
 msgid "Find a community based on your hobbies or interests."
 msgstr "Aimsigh pobal atá bunaithe ar do chaitheamh aimsire nó spéiseanna."
@@ -1427,6 +1431,11 @@ msgstr ""
 
 #: components/auth/src/AuthPage.tsx
 msgid "Image by @fakurian"
+msgstr ""
+
+#. placeholder {0}: maxSize / 1024
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Image size can be maximum {0}KB"
 msgstr ""
 
 #: components/modal/modals/ReportContent.tsx
@@ -1626,6 +1635,10 @@ msgstr "Logáil isteach"
 
 #: components/app/interface/settings/user/Sessions.tsx
 msgid "Logs you out of all sessions except this device."
+msgstr ""
+
+#: components/app/interface/settings/server/emojis/EmojiList.tsx
+msgid "Lowercase, numbers and underscores only."
 msgstr ""
 
 #: components/modal/modals/ReportContent.tsx
