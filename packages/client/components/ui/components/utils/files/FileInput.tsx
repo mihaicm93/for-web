@@ -33,7 +33,11 @@ interface Props {
   /**
    * What type of files to accept
    */
-  accept?: "image/*";
+  accept?: string;
+  /**
+   * accepted mime types (used by Form2 validation).
+   */
+  types?: string[];
 
   imageAspect?: string;
   imageRounded?: boolean;
@@ -103,7 +107,13 @@ export function FileInput(props: Props) {
         </>
       }
     >
-      <Match when={props.accept === "image/*"}>
+      <Match
+        when={
+          (props.types?.some((t) => t.startsWith("image/")) ?? false) ||
+          (props.accept?.includes("image/") ?? false)
+        }
+      >
+        {" "}
         <input
           type="file"
           ref={inputRef}

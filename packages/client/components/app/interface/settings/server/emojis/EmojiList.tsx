@@ -105,7 +105,7 @@ export function EmojiList(props: { server: Server }) {
             <Column>
               <Form2.FileInput
                 control={editGroup.controls.file}
-                accept="image/*"
+                accept={imgTypes.join(",")}
                 types={imgTypes}
                 typeError={invalidTypeError}
                 maxSize={maxSize}
