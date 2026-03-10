@@ -264,6 +264,10 @@ msgstr ""
 msgid "Accept friend request"
 msgstr ""
 
+#: components/app/interface/settings/UserSettings.tsx
+msgid "Accessibility"
+msgstr ""
+
 #: components/modal/modals/PolicyChange.tsx
 msgid "Acknowledge"
 msgstr ""
@@ -1150,6 +1154,10 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
+#: components/app/interface/settings/user/Accessibility.tsx
+msgid "Embeded Gif's will only play when the mouse hovers over them."
+msgstr ""
+
 #: components/app/interface/settings/server/emojis/EmojiList.tsx
 msgid "Emoji Name"
 msgstr ""
@@ -1938,6 +1946,10 @@ msgstr ""
 
 #: src/interface/navigation/servers/UserMenu.tsx
 msgid "Only mentions will notify you"
+msgstr ""
+
+#: components/app/interface/settings/user/Accessibility.tsx
+msgid "Only play GIFs when mouse hovers over"
 msgstr ""
 
 #: components/modal/modals/Invite.tsx
