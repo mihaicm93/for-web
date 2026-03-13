@@ -110,8 +110,11 @@ export function MessageReply(props: Props) {
     if (content.length > 128) {
       content = content.slice(0, 128) + "...";
     }
+    content = content.replace(/\n/g, " ");
 
-    return renderSimpleMarkdown(content.replace(/\n/g, " "));
+    content = content.replace(/ /g, "\u00A0");
+
+    return renderSimpleMarkdown(content);
   };
 
   return (
