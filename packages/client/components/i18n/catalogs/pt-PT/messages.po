@@ -458,16 +458,16 @@ msgstr ""
 
 #: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
 #: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
-#~ msgid "Browser"
-#~ msgstr ""
+msgid "Browser"
+msgstr ""
 
 #: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
 msgid "Browser Echo Cancellation"
 msgstr ""
 
 #: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
-msgid "Browser Noise Supression"
-msgstr ""
+#~ msgid "Browser Noise Supression"
+#~ msgstr ""
 
 #: components/app/interface/settings/user/Feedback.tsx
 msgid "Bug Tracker"
@@ -624,6 +624,10 @@ msgstr ""
 msgid "Click on the items below to learn more about different changes!"
 msgstr ""
 
+#: components/ui/components/features/profiles/ProfileBanner.tsx
+msgid "Click to copy username"
+msgstr ""
+
 #: src/interface/channels/ChannelHeader.tsx
 msgid "Click to show full description"
 msgstr ""
@@ -729,6 +733,10 @@ msgstr ""
 
 #: src/interface/navigation/channels/HomeSidebar.tsx
 msgid "Conversations"
+msgstr ""
+
+#: components/ui/components/features/profiles/ProfileBanner.tsx
+msgid "Copied!"
 msgstr ""
 
 #: components/app/menus/CategoryContextMenu.tsx
@@ -1031,6 +1039,8 @@ msgstr ""
 msgid "Disable one-time password authenticator"
 msgstr ""
 
+#: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
+#: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
 #: components/app/interface/settings/server/Overview.tsx
 #: components/app/interface/settings/server/Overview.tsx
 #: components/app/interface/settings/server/Overview.tsx
@@ -1184,12 +1194,12 @@ msgid "Enable transparency glass/blur effects (slow on older machines)"
 msgstr ""
 
 #: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
-#~ msgid "Enhanced"
-#~ msgstr ""
+msgid "Enhanced"
+msgstr ""
 
 #: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
-#~ msgid "Enhanced (RNNoise)"
-#~ msgstr ""
+msgid "Enhanced (RNNoise)"
+msgstr ""
 
 #: components/modal/modals/RenameSession.tsx
 msgid "Enter a new name for this session"
@@ -1219,8 +1229,8 @@ msgid "Enter your current password..."
 msgstr ""
 
 #: components/auth/src/flows/Form.tsx
-#~ msgid "Enter your invite code."
-#~ msgstr ""
+msgid "Enter your invite code."
+msgstr ""
 
 #: components/auth/src/flows/Form.tsx
 msgid "Enter your preferred username."
@@ -1449,6 +1459,7 @@ msgstr ""
 msgid "Invite Bot"
 msgstr ""
 
+#: components/auth/src/flows/Form.tsx
 #: components/app/interface/settings/server/invites/ListServerInvites.tsx
 msgid "Invite Code"
 msgstr ""
@@ -2055,8 +2066,8 @@ msgid "Please select a reason"
 msgstr ""
 
 #: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
-#~ msgid "Powered by RNNoise"
-#~ msgstr ""
+msgid "Powered by RNNoise"
+msgstr ""
 
 #: components/auth/src/AuthPage.tsx
 msgid "Privacy Policy"
@@ -2338,8 +2349,8 @@ msgid "Select members to add"
 msgstr ""
 
 #: components/app/interface/settings/user/voice/VoiceProcessingOptions.tsx
-#~ msgid "Select noise suppression"
-#~ msgstr ""
+msgid "Select noise suppression"
+msgstr ""
 
 #: components/app/interface/settings/user/Language.tsx
 msgid "Select your language"
@@ -2869,10 +2880,6 @@ msgstr ""
 
 #: components/modal/modals/AddFriend.tsx
 msgid "username#1234"
-msgstr ""
-
-#: components/modal/modals/AddFriend.tsx
-msgid "username#1234 required"
 msgstr ""
 
 #: components/modal/modals/ChannelToggleMature.tsx
