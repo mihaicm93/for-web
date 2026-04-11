@@ -9,6 +9,7 @@ import { useClient } from "@revolt/client";
 import { CONFIGURATION } from "@revolt/common";
 import { useError } from "@revolt/i18n";
 import { useModals } from "@revolt/modal";
+import { ALLOWED_IMAGE_TYPES } from "@revolt/state/stores/Draft";
 import {
   Avatar,
   CategoryButton,
@@ -31,12 +32,11 @@ export function EmojiList(props: { server: Server }) {
 
   // Validation requirements
   const namePattern = /^[a-z0-9_]{1,32}$/;
-  const imgTypes = ["image/png", "image/jpeg", "image/gif", "image/webp"];
+  const imgTypes = ALLOWED_IMAGE_TYPES;
   const maxSize = 500 * 1024;
 
   // Validation errors
   const namePatternError = t`Lowercase, numbers and underscores only.`;
-  const invalidTypeError = t`File type not supported, only ${imgTypes} are allowed.`;
   const imageSizeError = t`Image size can be maximum ${maxSize / 1024}KB`;
 
   function isDisabled() {
@@ -107,7 +107,6 @@ export function EmojiList(props: { server: Server }) {
                 control={editGroup.controls.file}
                 accept={imgTypes.join(",")}
                 types={imgTypes}
-                typeError={invalidTypeError}
                 maxSize={maxSize}
                 sizeError={imageSizeError}
                 imageJustify={false}

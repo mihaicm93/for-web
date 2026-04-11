@@ -9,7 +9,7 @@ import {
   splitProps,
 } from "solid-js";
 
-import { Trans } from "@lingui-solid/solid/macro";
+import { Trans, useLingui } from "@lingui-solid/solid/macro";
 import { VirtualContainer } from "@minht11/solid-virtual-container";
 import { css } from "styled-system/css";
 import { styled } from "styled-system/jsx";
@@ -166,6 +166,8 @@ const FormFileInput = (
     "sizeError",
   ]);
 
+  const { t } = useLingui();
+
   return (
     <>
       <Show when={local.label}>
@@ -182,11 +184,14 @@ const FormFileInput = (
           }
 
           const file = files[0];
+          const displayTypes = (local.types ?? []).map(
+            (m) => `*.${m.split("/")[1]}`,
+          );
 
           // Type validation
           if (local.types && !local.types.includes(file.type)) {
             local.control.setErrors({
-              type: local.typeError || "Invalid file type",
+              type: t`File type not supported, only ${displayTypes.join(", ")} are allowed.`,
             });
             local.control.markTouched(true);
             return;
@@ -196,7 +201,7 @@ const FormFileInput = (
           if (local.maxSize && file.size > local.maxSize) {
             const maxKB = Math.round(local.maxSize / 1024);
             local.control.setErrors({
-              size: local.sizeError || `Max size is ${maxKB}KB`,
+              size: local.sizeError || t`Max size is ${maxKB}KB`,
             });
             local.control.markTouched(true);
             return;
