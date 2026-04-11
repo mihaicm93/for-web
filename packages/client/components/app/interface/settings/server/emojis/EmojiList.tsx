@@ -9,7 +9,6 @@ import { useClient } from "@revolt/client";
 import { CONFIGURATION } from "@revolt/common";
 import { useError } from "@revolt/i18n";
 import { useModals } from "@revolt/modal";
-import { ALLOWED_IMAGE_TYPES } from "@revolt/state/stores/Draft";
 import {
   Avatar,
   CategoryButton,
@@ -32,7 +31,6 @@ export function EmojiList(props: { server: Server }) {
 
   // Validation requirements
   const namePattern = /^[a-z0-9_]{1,32}$/;
-  const imgTypes = ALLOWED_IMAGE_TYPES;
   const maxSize = 500 * 1024;
 
   // Validation errors
@@ -105,8 +103,6 @@ export function EmojiList(props: { server: Server }) {
             <Column>
               <Form2.FileInput
                 control={editGroup.controls.file}
-                accept={imgTypes.join(",")}
-                types={imgTypes}
                 maxSize={maxSize}
                 sizeError={imageSizeError}
                 imageJustify={false}
@@ -121,7 +117,7 @@ export function EmojiList(props: { server: Server }) {
                 name="name"
                 control={editGroup.controls.name}
                 label={t`Emoji Name`}
-                pattern={namePattern}
+                validationPattern={namePattern}
                 patternError={namePatternError}
               />
 

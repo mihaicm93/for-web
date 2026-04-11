@@ -17,6 +17,7 @@ import { styled } from "styled-system/jsx";
 import { Button, Checkbox, Radio2, Text, TextField } from "../design";
 import { TextEditor2 } from "../features/texteditor/TextEditor2";
 
+import { ALLOWED_IMAGE_TYPES } from "@revolt/state/stores/Draft";
 import { FileInput } from "./files";
 
 /**
@@ -25,13 +26,13 @@ import { FileInput } from "./files";
 const FormTextField = (
   props: {
     control: IFormControl<string>;
-    pattern?: RegExp;
+    validationPattern?: RegExp;
     patternError?: string;
   } & ComponentProps<typeof TextField>,
 ) => {
   const [local, remote] = splitProps(props, [
     "control",
-    "pattern",
+    "validationPattern",
     "patternError",
   ]);
 
@@ -45,8 +46,8 @@ const FormTextField = (
           local.control.setValue(value);
           local.control.markDirty(true);
 
-          if (local.pattern && local.patternError) {
-            if (!local.pattern.test(value)) {
+          if (local.validationPattern && local.patternError) {
+            if (!local.validationPattern.test(value)) {
               local.control.setErrors({ pattern: local.patternError });
               return;
             }
@@ -164,7 +165,10 @@ const FormFileInput = (
     "maxSize",
     "typeError",
     "sizeError",
+    "accept",
   ]);
+
+  const effectiveTypes = ALLOWED_IMAGE_TYPES;
 
   const { t } = useLingui();
 
@@ -175,6 +179,7 @@ const FormFileInput = (
       </Show>
       <FileInput
         {...remote}
+        accept={effectiveTypes?.join(",")}
         file={local.control.value}
         onFiles={(files) => {
           if (!files || files.length === 0) {
@@ -184,14 +189,16 @@ const FormFileInput = (
           }
 
           const file = files[0];
-          const displayTypes = (local.types ?? []).map(
+          const displayTypes = effectiveTypes.map(
             (m) => `*.${m.split("/")[1]}`,
           );
 
           // Type validation
-          if (local.types && !local.types.includes(file.type)) {
+          if (effectiveTypes && !effectiveTypes.includes(file.type)) {
             local.control.setErrors({
-              type: t`File type not supported, only ${displayTypes.join(", ")} are allowed.`,
+              type:
+                local.typeError ||
+                t`File type not supported, only ${displayTypes.join(", ")} are allowed.`,
             });
             local.control.markTouched(true);
             return;
