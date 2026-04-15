@@ -16,8 +16,6 @@ export const DEFAULT_SEQUENCES: Record<KeybindAction, (string | RegExp)[]> = {
   [KeybindAction.CLOSE_MODAL]: ["Escape"],
   [KeybindAction.CLOSE_FLOATING]: ["Escape"],
   [KeybindAction.CLOSE_SIDEBAR]: ["Escape"],
-  [KeybindAction.VOICE_TOGGLE_MUTE]: ["Alt", "d"],
-  [KeybindAction.VOICE_TOGGLE_DEAFEN]: ["Alt", "m"],
 };
 
 /**
@@ -46,8 +44,6 @@ export const DEFAULT_MAC_SEQUENCES: Record<KeybindAction, (string | RegExp)[]> =
     [KeybindAction.CLOSE_MODAL]: ["Escape"],
     [KeybindAction.CLOSE_FLOATING]: ["Escape"],
     [KeybindAction.CLOSE_SIDEBAR]: ["Escape"],
-    [KeybindAction.VOICE_TOGGLE_MUTE]: ["Alt", "m"],
-    [KeybindAction.VOICE_TOGGLE_DEAFEN]: ["Alt", "d"],
   };
 
 export function getSequences(action: KeybindAction) {
