@@ -35,7 +35,7 @@ import { Sessions } from "./user/Sessions";
 import { AccountCard } from "./user/_AccountCard";
 import { AppearanceMenu } from "./user/appearance";
 import { MyBots, ViewBot } from "./user/bots";
-import { KeybindSettings } from "./user/keybinds/KeybindSettings";
+import { KeybindSettings } from "./user/keybinds";
 import { EditProfile } from "./user/profile";
 import { EditSubscription } from "./user/subscriptions";
 import { VoiceSettings } from "./user/voice/VoiceSettings";
